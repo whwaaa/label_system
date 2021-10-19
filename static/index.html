@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>index</title>
+		<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+		<script src="js/globa.js"></script>
+		<script>
+			var url1 = "http://192.168.8.110"
+			var url2 = "http://2539604i5x.qicp.vip:31832"
+			$(document).ready(function () {
+			  // 执行代码
+			  NetPing(url1)
+			  function NetPing(pingUrl) {
+			    $.ajax({
+			      type: "GET",
+				  data: "",
+			      cache: false,
+			      url: pingUrl,
+				  xhrFields: {
+				  	withCredentials: true
+				  },
+				  crossDomain: true,
+			      success: function () {
+			        console.log(pingUrl + "网址有效，开始加载。。");
+					location.href = "http://127.0.0.1:8848/static/createTemplate.html";
+			      },
+			      error: function () {
+			        console.log(pingUrl + ": 无效网址，请重新输入!");
+					location.href = "http://192.168.8.187:8848/static/createTemplate.html";
+			      }
+			    });
+			  }
+			})
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

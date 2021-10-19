@@ -1,0 +1,191 @@
+.index-box{
+	border-right: #D5D5D5 1px solid;
+	height: 650px;
+	background: white;
+	overflow-y: auto;
+}
+
+.index-box{
+	list-style-type: none;
+}
+.index-box>li{
+	line-height: 40px;
+	width: 100%;
+	text-align: left;
+	padding-left: 20px;
+	border-top: 1px solid #D5D5D5;
+	/* border-bottom: 1px solid #D5D5D5; */
+	border-right: 1px solid #D5D5D5;
+	margin-bottom: 10px;
+	
+}
+.index-box p{
+	margin: 0;
+}
+
+.show-box{
+	height: 650px;
+	overflow-y: auto;
+}
+/* .show_box a{
+	color: black;
+	text-decoration: none;
+}
+.show_box a:hover{
+	color: black;
+	text-decoration: none;
+} */
+.label{
+	height: 500px;
+	display: block;
+	margin-top: 5px;
+}
+
+.sub{
+	margin-left: -30px;
+	list-style: none;
+	display: none;
+}
+.subbox{
+	margin-top: 3px;
+	height: 30px;
+	width: 100%;
+}
+.icon{
+	display: inline-block;
+	margin: 5px;
+	width: 20px;
+	height: 20px;
+	background: url(../img/icon.png);
+	background-size: 100%;
+	float: left;
+}
+.subbox>li{
+	display: inline-block;
+	height: 30px;
+	line-height: 30px;
+	float: left;
+}
+
+
+/* 预览显示模块 */
+.show_box{
+	color: black;
+	border: 1px black solid;
+	width: 80%;
+	box-sizing: border-box;
+	position: relative;
+	border-radius: 10px;
+	margin: 5px auto;
+	background: white;
+}
+.preview{
+	width: 100%;
+	margin: 0px 0 0px 10px;
+	/* 下方编辑区 */
+	height: 30px; 
+}
+.preview_title{
+	display: inline-block;
+	float: left;
+	/* 下方编辑区 */
+	height: 30px; 
+	line-height: 30px; 
+	font-size: 1.5rem;
+}
+.preview_content{
+	display: inline-block;
+	max-width: 186px;
+	height: 100%; 
+	float: left;
+	margin-left: 7px;
+	overflow: auto;
+	/* 下方编辑区 */
+	font-size: 1.5rem;
+	line-height: 30px; 
+}
+.max_width_M{
+	
+}
+.max_width_L{
+	
+}
+.canvascode{
+	width: 90%;
+	display: inline-block;
+	margin: 0 0 0 5%;
+	/* 下方编辑区 */
+	height: 30px;
+}
+.showbox{
+	margin-top: 0;
+	margin-bottom: 30px;
+	height: 600px;
+}
+.btn_box{	
+	position: relative;
+	box-sizing: border-box;
+	float: left;
+	width: 80%;
+}
+.btn_box .btn{
+	margin-left: 20%;
+}
+@media (max-width: @screen-xs-max){
+	.select_max_width_M{
+		max-width: 160px;
+	}
+	.select_max_width_L{
+		max-width: 186px;
+	}
+}
+
+.update-dot{
+	position: absolute;
+	right: 0;
+	top: -27px;
+	width: 25px;
+	height: 25px;
+}
+.cancel-dot{
+	position: absolute;
+	right: 30px;
+	top: -27px;
+	width: 25px;
+	height: 25px;
+}
+.delete-dot{
+	position: absolute;
+	right: 60px;
+	top: -26px;
+	width: 25px;
+	height: 25px;
+}
+.down-dot{
+	position: absolute;
+	right: 30px;
+	top: 7px;
+	width: 25px;
+	height: 25px;
+	cursor: pointer;
+	z-index: 2;
+}
+.down-dot button{
+	border: none;
+	background: white;
+}
+.lnr-checkmark-circle{
+	color: green;
+	font-size: 23px
+}
+.lnr-cross-circle{
+	color: #EC971F;
+	font-size: 23px
+}
+.lnr-trash{
+	color: red;
+	font-size: 20px
+}
+.lnr-download{
+	font-size: 20px
+}
