@@ -1,0 +1,62 @@
+
+
+/* 预览显示模块 */
+.show_box{
+	border: 1px black solid;
+	width: 300px;
+	box-sizing: border-box;
+	position: relative;
+	border-radius: 10px;
+	margin: 0 auto;
+	background: white;
+}
+.preview{
+	width: 100%;
+	margin: 0px 0 0px 10px;
+	/* 下方编辑区 */
+	height: 30px; 
+}
+.preview_title{
+	display: inline-block;
+	float: left;
+	/* 下方编辑区 */
+	height: 30px; 
+	line-height: 30px;
+	/* font-size: 1.8rem; */
+}
+.preview_content{
+	display: inline-block;
+	max-width: 250px;
+	height: 100%; 
+	float: left;
+	margin-left: 7px;
+	overflow: auto;
+	/* 下方编辑区 */
+	/* font-size: 1.5rem; */
+	line-height: 30px;
+}
+#canvascode{
+	width: 90%;
+	display: inline-block;
+	margin: 0 0 0 5%;
+	/* 下方编辑区 */
+	height: 40px;
+}
+
+
+/* 编辑区模块 */
+.edit{
+	padding-left: 15px;
+	margin: 10px auto;
+	width: 300px;
+	box-sizing: border-box;
+	position: relative;
+}
+.checkbox-inline{
+	margin-left: 10px;
+}
+
+
+.hidden{
+	display: none;
+}
