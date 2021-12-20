@@ -1,0 +1,518 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jumaojiang.mapper.LabelMapper">
+  <resultMap id="BaseResultMap" type="com.jumaojiang.pojo.Label">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="is_del" jdbcType="VARCHAR" property="isDel" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="type_name" jdbcType="VARCHAR" property="typeName" />
+    <result column="kuan_hao" jdbcType="VARCHAR" property="kuanHao" />
+    <result column="color" jdbcType="VARCHAR" property="color" />
+    <result column="size" jdbcType="VARCHAR" property="size" />
+    <result column="zxbz" jdbcType="VARCHAR" property="zxbz" />
+    <result column="cplb" jdbcType="VARCHAR" property="cplb" />
+    <result column="out_fabric" jdbcType="VARCHAR" property="outFabric" />
+    <result column="int_fabric" jdbcType="VARCHAR" property="intFabric" />
+    <result column="filler" jdbcType="VARCHAR" property="filler" />
+    <result column="checker" jdbcType="VARCHAR" property="checker" />
+    <result column="level" jdbcType="VARCHAR" property="level" />
+    <result column="bar_code" jdbcType="VARCHAR" property="barCode" />
+    <result column="guide_price" jdbcType="DECIMAL" property="guidePrice" />
+    <result column="sell_price" jdbcType="DECIMAL" property="sellPrice" />
+    <result column="buy_price" jdbcType="DECIMAL" property="buyPrice" />
+    <result column="is_selled" jdbcType="INTEGER" property="isSelled" />
+    <result column="template_id" jdbcType="INTEGER" property="templateId" />
+    <result column="blank1" jdbcType="VARCHAR" property="blank1" />
+    <result column="blank2" jdbcType="VARCHAR" property="blank2" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, is_del, user_id, create_time, update_time, type_name, kuan_hao, color, size, 
+    zxbz, cplb, out_fabric, int_fabric, filler, checker, level, bar_code, guide_price, 
+    sell_price, buy_price, is_selled, template_id, blank1, blank2
+  </sql>
+  <select id="selectByExample" parameterType="com.jumaojiang.pojo.LabelExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from label
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from label
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    SELECT * FROM label WHERE is_Del=0
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from label
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.jumaojiang.pojo.LabelExample">
+    delete from label
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.jumaojiang.pojo.Label">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      select LAST_INSERT_ID()
+    </selectKey>
+    insert into label (id, is_del, user_id, 
+      create_time, update_time, type_name, 
+      kuan_hao, color, size, 
+      zxbz, cplb, out_fabric, 
+      int_fabric, filler, checker, 
+      level, bar_code, guide_price, 
+      sell_price, buy_price, is_selled, 
+      template_id, blank1, blank2
+      )
+    values (#{id,jdbcType=INTEGER}, #{isDel,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{typeName,jdbcType=VARCHAR}, 
+      #{kuanHao,jdbcType=VARCHAR}, #{color,jdbcType=VARCHAR}, #{size,jdbcType=VARCHAR}, 
+      #{zxbz,jdbcType=VARCHAR}, #{cplb,jdbcType=VARCHAR}, #{outFabric,jdbcType=VARCHAR}, 
+      #{intFabric,jdbcType=VARCHAR}, #{filler,jdbcType=VARCHAR}, #{checker,jdbcType=VARCHAR}, 
+      #{level,jdbcType=VARCHAR}, #{barCode,jdbcType=VARCHAR}, #{guidePrice,jdbcType=DECIMAL}, 
+      #{sellPrice,jdbcType=DECIMAL}, #{buyPrice,jdbcType=DECIMAL}, #{isSelled,jdbcType=INTEGER}, 
+      #{templateId,jdbcType=INTEGER}, #{blank1,jdbcType=VARCHAR}, #{blank2,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.jumaojiang.pojo.Label">
+    insert into label
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="isDel != null">
+        is_del,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="typeName != null">
+        type_name,
+      </if>
+      <if test="kuanHao != null">
+        kuan_hao,
+      </if>
+      <if test="color != null">
+        color,
+      </if>
+      <if test="size != null">
+        size,
+      </if>
+      <if test="zxbz != null">
+        zxbz,
+      </if>
+      <if test="cplb != null">
+        cplb,
+      </if>
+      <if test="outFabric != null">
+        out_fabric,
+      </if>
+      <if test="intFabric != null">
+        int_fabric,
+      </if>
+      <if test="filler != null">
+        filler,
+      </if>
+      <if test="checker != null">
+        checker,
+      </if>
+      <if test="level != null">
+        level,
+      </if>
+      <if test="barCode != null">
+        bar_code,
+      </if>
+      <if test="guidePrice != null">
+        guide_price,
+      </if>
+      <if test="sellPrice != null">
+        sell_price,
+      </if>
+      <if test="buyPrice != null">
+        buy_price,
+      </if>
+      <if test="isSelled != null">
+        is_selled,
+      </if>
+      <if test="templateId != null">
+        template_id,
+      </if>
+      <if test="blank1 != null">
+        blank1,
+      </if>
+      <if test="blank2 != null">
+        blank2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="isDel != null">
+        #{isDel,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="typeName != null">
+        #{typeName,jdbcType=VARCHAR},
+      </if>
+      <if test="kuanHao != null">
+        #{kuanHao,jdbcType=VARCHAR},
+      </if>
+      <if test="color != null">
+        #{color,jdbcType=VARCHAR},
+      </if>
+      <if test="size != null">
+        #{size,jdbcType=VARCHAR},
+      </if>
+      <if test="zxbz != null">
+        #{zxbz,jdbcType=VARCHAR},
+      </if>
+      <if test="cplb != null">
+        #{cplb,jdbcType=VARCHAR},
+      </if>
+      <if test="outFabric != null">
+        #{outFabric,jdbcType=VARCHAR},
+      </if>
+      <if test="intFabric != null">
+        #{intFabric,jdbcType=VARCHAR},
+      </if>
+      <if test="filler != null">
+        #{filler,jdbcType=VARCHAR},
+      </if>
+      <if test="checker != null">
+        #{checker,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null">
+        #{level,jdbcType=VARCHAR},
+      </if>
+      <if test="barCode != null">
+        #{barCode,jdbcType=VARCHAR},
+      </if>
+      <if test="guidePrice != null">
+        #{guidePrice,jdbcType=DECIMAL},
+      </if>
+      <if test="sellPrice != null">
+        #{sellPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="buyPrice != null">
+        #{buyPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="isSelled != null">
+        #{isSelled,jdbcType=INTEGER},
+      </if>
+      <if test="templateId != null">
+        #{templateId,jdbcType=INTEGER},
+      </if>
+      <if test="blank1 != null">
+        #{blank1,jdbcType=VARCHAR},
+      </if>
+      <if test="blank2 != null">
+        #{blank2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.jumaojiang.pojo.LabelExample" resultType="java.lang.Long">
+    select count(*) from label
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update label
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.isDel != null">
+        is_del = #{record.isDel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userId != null">
+        user_id = #{record.userId,jdbcType=INTEGER},
+      </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null">
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.typeName != null">
+        type_name = #{record.typeName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.kuanHao != null">
+        kuan_hao = #{record.kuanHao,jdbcType=VARCHAR},
+      </if>
+      <if test="record.color != null">
+        color = #{record.color,jdbcType=VARCHAR},
+      </if>
+      <if test="record.size != null">
+        size = #{record.size,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zxbz != null">
+        zxbz = #{record.zxbz,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cplb != null">
+        cplb = #{record.cplb,jdbcType=VARCHAR},
+      </if>
+      <if test="record.outFabric != null">
+        out_fabric = #{record.outFabric,jdbcType=VARCHAR},
+      </if>
+      <if test="record.intFabric != null">
+        int_fabric = #{record.intFabric,jdbcType=VARCHAR},
+      </if>
+      <if test="record.filler != null">
+        filler = #{record.filler,jdbcType=VARCHAR},
+      </if>
+      <if test="record.checker != null">
+        checker = #{record.checker,jdbcType=VARCHAR},
+      </if>
+      <if test="record.level != null">
+        level = #{record.level,jdbcType=VARCHAR},
+      </if>
+      <if test="record.barCode != null">
+        bar_code = #{record.barCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.guidePrice != null">
+        guide_price = #{record.guidePrice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.sellPrice != null">
+        sell_price = #{record.sellPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.buyPrice != null">
+        buy_price = #{record.buyPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.isSelled != null">
+        is_selled = #{record.isSelled,jdbcType=INTEGER},
+      </if>
+      <if test="record.templateId != null">
+        template_id = #{record.templateId,jdbcType=INTEGER},
+      </if>
+      <if test="record.blank1 != null">
+        blank1 = #{record.blank1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.blank2 != null">
+        blank2 = #{record.blank2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update label
+    set id = #{record.id,jdbcType=INTEGER},
+      is_del = #{record.isDel,jdbcType=VARCHAR},
+      user_id = #{record.userId,jdbcType=INTEGER},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      type_name = #{record.typeName,jdbcType=VARCHAR},
+      kuan_hao = #{record.kuanHao,jdbcType=VARCHAR},
+      color = #{record.color,jdbcType=VARCHAR},
+      size = #{record.size,jdbcType=VARCHAR},
+      zxbz = #{record.zxbz,jdbcType=VARCHAR},
+      cplb = #{record.cplb,jdbcType=VARCHAR},
+      out_fabric = #{record.outFabric,jdbcType=VARCHAR},
+      int_fabric = #{record.intFabric,jdbcType=VARCHAR},
+      filler = #{record.filler,jdbcType=VARCHAR},
+      checker = #{record.checker,jdbcType=VARCHAR},
+      level = #{record.level,jdbcType=VARCHAR},
+      bar_code = #{record.barCode,jdbcType=VARCHAR},
+      guide_price = #{record.guidePrice,jdbcType=DECIMAL},
+      sell_price = #{record.sellPrice,jdbcType=DECIMAL},
+      buy_price = #{record.buyPrice,jdbcType=DECIMAL},
+      is_selled = #{record.isSelled,jdbcType=INTEGER},
+      template_id = #{record.templateId,jdbcType=INTEGER},
+      blank1 = #{record.blank1,jdbcType=VARCHAR},
+      blank2 = #{record.blank2,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jumaojiang.pojo.Label">
+    update label
+    <set>
+      <if test="isDel != null">
+        is_del = #{isDel,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="typeName != null">
+        type_name = #{typeName,jdbcType=VARCHAR},
+      </if>
+      <if test="kuanHao != null">
+        kuan_hao = #{kuanHao,jdbcType=VARCHAR},
+      </if>
+      <if test="color != null">
+        color = #{color,jdbcType=VARCHAR},
+      </if>
+      <if test="size != null">
+        size = #{size,jdbcType=VARCHAR},
+      </if>
+      <if test="zxbz != null">
+        zxbz = #{zxbz,jdbcType=VARCHAR},
+      </if>
+      <if test="cplb != null">
+        cplb = #{cplb,jdbcType=VARCHAR},
+      </if>
+      <if test="outFabric != null">
+        out_fabric = #{outFabric,jdbcType=VARCHAR},
+      </if>
+      <if test="intFabric != null">
+        int_fabric = #{intFabric,jdbcType=VARCHAR},
+      </if>
+      <if test="filler != null">
+        filler = #{filler,jdbcType=VARCHAR},
+      </if>
+      <if test="checker != null">
+        checker = #{checker,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null">
+        level = #{level,jdbcType=VARCHAR},
+      </if>
+      <if test="barCode != null">
+        bar_code = #{barCode,jdbcType=VARCHAR},
+      </if>
+      <if test="guidePrice != null">
+        guide_price = #{guidePrice,jdbcType=DECIMAL},
+      </if>
+      <if test="sellPrice != null">
+        sell_price = #{sellPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="buyPrice != null">
+        buy_price = #{buyPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="isSelled != null">
+        is_selled = #{isSelled,jdbcType=INTEGER},
+      </if>
+      <if test="templateId != null">
+        template_id = #{templateId,jdbcType=INTEGER},
+      </if>
+      <if test="blank1 != null">
+        blank1 = #{blank1,jdbcType=VARCHAR},
+      </if>
+      <if test="blank2 != null">
+        blank2 = #{blank2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jumaojiang.pojo.Label">
+    update label
+    set is_del = #{isDel,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      type_name = #{typeName,jdbcType=VARCHAR},
+      kuan_hao = #{kuanHao,jdbcType=VARCHAR},
+      color = #{color,jdbcType=VARCHAR},
+      size = #{size,jdbcType=VARCHAR},
+      zxbz = #{zxbz,jdbcType=VARCHAR},
+      cplb = #{cplb,jdbcType=VARCHAR},
+      out_fabric = #{outFabric,jdbcType=VARCHAR},
+      int_fabric = #{intFabric,jdbcType=VARCHAR},
+      filler = #{filler,jdbcType=VARCHAR},
+      checker = #{checker,jdbcType=VARCHAR},
+      level = #{level,jdbcType=VARCHAR},
+      bar_code = #{barCode,jdbcType=VARCHAR},
+      guide_price = #{guidePrice,jdbcType=DECIMAL},
+      sell_price = #{sellPrice,jdbcType=DECIMAL},
+      buy_price = #{buyPrice,jdbcType=DECIMAL},
+      is_selled = #{isSelled,jdbcType=INTEGER},
+      template_id = #{templateId,jdbcType=INTEGER},
+      blank1 = #{blank1,jdbcType=VARCHAR},
+      blank2 = #{blank2,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
